@@ -20,7 +20,7 @@ while(playingCondition == True):
 
 
     while(correctinput == False):
-        print("Select an input on the numpad")
+        print("Select an input on the keypad")
         SelectedLine = 0
         selectedPosition = int(input())
 
@@ -102,7 +102,10 @@ while(playingCondition == True):
                 playingCondition = False
                 victor = selectedPlayer
 
-
+    #dernier tour possible
+    if(turn == 9 and playingCondition == True):
+        playingCondition = False
+        victor = "nobody"
 
 
 

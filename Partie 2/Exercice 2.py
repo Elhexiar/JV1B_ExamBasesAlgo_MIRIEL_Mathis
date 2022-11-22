@@ -19,7 +19,7 @@ while(True):
 
 
     while(correctinput == False):
-        print("Select an input on the keypad")
+        print("Select an input on the numpad")
         SelectedLine = 0
         selectedPosition = int(input())
 

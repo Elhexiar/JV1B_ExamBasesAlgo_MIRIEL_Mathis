@@ -10,20 +10,27 @@ correctinput =  False
 turn = 0
 playingCondition = True
 
+
+#Mon code de l'exercice 4 permet deja de jouer de maniere complete au tic tac toe ayant implemente chaque exercice a la suite
+#Le voici cependant un peu plus commente
+
+#Boucle principale avec condition de victoire
 while(playingCondition == True):
 
 
+    #Changement de joueur en fonction du tour
     if(turn%2 == 0):
         selectedPlayer = "X"
     else :
         selectedPlayer = "O"
 
-
+    #Input du joueur sur le numpad
     while(correctinput == False):
         print("Select an input on the numpad")
         SelectedLine = 0
         selectedPosition = int(input())
 
+        #ajustement de l'input du joueur dans des coordonnees comprehensible par mon programme et verification que le joueur n'est pas mis un chiffre invalide ou une position invalide
         if(selectedPosition<=3):
             selectedLine = 2
             selectedPosition = selectedPosition-1
@@ -37,17 +44,23 @@ while(playingCondition == True):
             selectedPosition = selectedPosition-7
             correctinput = True
 
+        #Verification si la position est libre
         if(correctinput == True):
             if(plateau[selectedLine][selectedPosition] != " "):
                 correctinput = False
-                print("Il y a déja quelque chose a cet endroit")
+                print("Il y a deja quelque chose a cet endroit")
+
+    
 
     correctinput = False
+    
+    #On applique l'input du joueur verifie a nos tableau
     plateau[selectedLine][selectedPosition] = selectedPlayer
+    #On avance de 1 le tour ayant ete effectue ce qui nous permet de commencer au tour 1 et non 0 dès le debut des calcule et pour le reste des iterations
     turn = turn+1
 
 
-
+    #On affiche le plateau
     for compteurLigne in range(len(plateau)):
             
         for i in range (len(plateau[compteurLigne])):
@@ -59,8 +72,10 @@ while(playingCondition == True):
         print(separationLigneHorizontal)
         currentString = ""
 
+    
+    #verification des condition de victoire
     score = 0
-    #verification
+    #On fait une verification pour chaque joueur
     for player in range(1):
         if(player%2 == 0):
             selectedPlayer = "X"
@@ -93,7 +108,7 @@ while(playingCondition == True):
             score = 0
 
         #verification diagonale
-        #on verifie déja si celui du milieux est fait
+        #on verifie deja si celui du milieux est fait
         if(plateau[1][1] == selectedPlayer):
             if(plateau[0][0] == selectedPlayer and plateau[2][2] == selectedPlayer):
                 playingCondition = False
@@ -102,7 +117,10 @@ while(playingCondition == True):
                 playingCondition = False
                 victor = selectedPlayer
 
-
+    #dernier tour possible
+    if(turn == 9 and playingCondition == True):
+        playingCondition = False
+        victor = "nobody"
 
 
 
